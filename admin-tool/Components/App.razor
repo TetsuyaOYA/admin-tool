@@ -23,7 +23,7 @@
     [CascadingParameter]
     private HttpContext HttpContext { get; set; } = default!;
 
-    private IComponentRenderMode? RenderModeForPage => HttpContext.Request.Path.StartsWithSegments("/Account")
-        ? null
-        : InteractiveServer;
+	// /Account 以下のページは Server-Side レンダリングを使用する
+    private IComponentRenderMode? RenderModeForPage => 
+        HttpContext.Request.Path.StartsWithSegments("/Account") ? null : InteractiveServer;
 }
