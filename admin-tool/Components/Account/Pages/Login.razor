@@ -1,9 +1,11 @@
 ﻿@page "/Account/Login"
+@attribute [AllowAnonymous]
 
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Identity
 @using admin_tool.Data
+@using Microsoft.AspNetCore.Authorization
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject ILogger<Login> Logger
@@ -55,13 +57,13 @@
             </EditForm>
         </section>
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to log in.</h3>
-            <hr />
-            <ExternalLoginPicker />
-        </section>
-    </div>
+    @* <div class="col-md-6 col-md-offset-2"> *@
+    @*     <section> *@
+    @*         <h3>Use another service to log in.</h3> *@
+    @*         <hr /> *@
+    @*         <ExternalLoginPicker /> *@
+    @*     </section> *@
+    @* </div> *@
 </div>
 
 @code {
