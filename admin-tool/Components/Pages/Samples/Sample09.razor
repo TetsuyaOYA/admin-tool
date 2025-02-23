@@ -1,0 +1,18 @@
+﻿@page "/Sample09"
+@using Microsoft.EntityFrameworkCore
+
+@inject IDbContextFactory<PubsDbContext> DbFactory
+
+<h3>Sample09：コンポーネント化</h3>
+
+<AuthorsGrid Authors="@authors" />
+
+@code {
+    private IQueryable<Author>? authors = null;
+    protected override async Task OnInitializedAsync()
+    {
+        await using var pubs = await DbFactory.CreateDbContextAsync();
+        authors = (await pubs.Authors.ToListAsync()).AsQueryable();
+    }
+
+}
